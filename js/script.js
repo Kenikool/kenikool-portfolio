@@ -52,6 +52,16 @@ if (mobileMenuToggle) {
       navMenu.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
     }
   });
+
+  // Close menu when clicking on a menu item
+  const navLinks = navMenu.querySelectorAll("a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 768) {
+        navMenu.style.display = "none";
+      }
+    });
+  });
 }
 
 // Contact form handling
@@ -94,9 +104,23 @@ document.querySelectorAll("a[download]").forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
     const href = link.getAttribute("href");
-    alert(
-      `To download as PDF:\n1. Open ${href}\n2. Press Ctrl+P (or Cmd+P on Mac)\n3. Select "Save as PDF"\n4. Click Save`
-    );
-    window.open(href, "_blank");
+    // Open the page in a new window and trigger print dialog
+    const printWindow = window.open(href, "_blank");
+    if (printWindow) {
+      printWindow.onload = function () {
+        setTimeout(() => {
+          printWindow.print();
+        }, 500);
+      };
+    }
   });
+});
+
+// Auto-update footer year
+document.addEventListener("DOMContentLoaded", () => {
+  const footerYear = document.querySelector(".footer-bottom p");
+  if (footerYear) {
+    const currentYear = new Date().getFullYear();
+    footerYear.innerHTML = `&copy; ${currentYear} Kenikool Tech World. All rights reserved.`;
+  }
 });
