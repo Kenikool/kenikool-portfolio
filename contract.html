@@ -1,470 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contract Template - Kenikool Tech World</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f8f9fa;
-        }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f8f9fa;
+      }
+      .back-btn {
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+        background: var(--primary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        z-index: 1000;
+      }
+      .back-btn:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .content {
+        padding: 2rem;
+      }
+      h1 {
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 3px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+      }
+      h2 {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin: 2rem 0 1rem 0;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 0.5rem;
+      }
+      h3 {
+        color: var(--dark-color);
+        font-size: 1.5rem;
+        margin: 1.5rem 0 1rem 0;
+      }
+      h4 {
+        color: var(--primary-color);
+        font-size: 1.25rem;
+        margin: 1rem 0 0.5rem 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 0.75rem;
+        text-align: left;
+      }
+      th {
+        background: var(--primary-color);
+        color: white;
+      }
+      tr:nth-child(even) {
+        background: #f8f9fa;
+      }
+      ul,
+      ol {
+        margin: 1rem 0;
+        padding-left: 2rem;
+      }
+      li {
+        margin: 0.5rem 0;
+      }
+      strong {
+        color: var(--dark-color);
+      }
+      code {
+        background: #f4f4f4;
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.25rem;
+        font-family: "Courier New", monospace;
+      }
+      blockquote {
+        border-left: 4px solid var(--primary-color);
+        padding-left: 1rem;
+        margin: 1rem 0;
+        font-style: italic;
+        background: #f8f9fa;
+        padding: 1rem;
+      }
+      hr {
+        border: none;
+        border-top: 2px solid #e0e0e0;
+        margin: 2rem 0;
+      }
+      @media print {
         .back-btn {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            z-index: 1000;
+          display: none;
         }
-        .back-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .content {
-            padding: 2rem;
-        }
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-        }
-        h2 {
-            color: var(--primary-color);
-            font-size: 2rem;
-            margin: 2rem 0 1rem 0;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 0.5rem;
-        }
-        h3 {
-            color: var(--dark-color);
-            font-size: 1.5rem;
-            margin: 1.5rem 0 1rem 0;
-        }
-        h4 {
-            color: var(--primary-color);
-            font-size: 1.25rem;
-            margin: 1rem 0 0.5rem 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 0.75rem;
-            text-align: left;
-        }
-        th {
-            background: var(--primary-color);
-            color: white;
-        }
-        tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-        ul, ol {
-            margin: 1rem 0;
-            padding-left: 2rem;
-        }
-        li {
-            margin: 0.5rem 0;
-        }
-        strong {
-            color: var(--dark-color);
-        }
-        code {
-            background: #f4f4f4;
-            padding: 0.2rem 0.4rem;
-            border-radius: 0.25rem;
-            font-family: 'Courier New', monospace;
-        }
-        blockquote {
-            border-left: 4px solid var(--primary-color);
-            padding-left: 1rem;
-            margin: 1rem 0;
-            font-style: italic;
-            background: #f8f9fa;
-            padding: 1rem;
-        }
-        hr {
-            border: none;
-            border-top: 2px solid #e0e0e0;
-            margin: 2rem 0;
-        }
-        @media print {
-            .back-btn {
-                display: none;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <a href="index.html" class="back-btn">← Back to Portfolio</a>
-    <div style="text-align: center; padding: 2rem 0; background: white;">
-        <img src="ASSETS/kenikool-logo-1-geometric.png" alt="Kenikool Logo" style="width: 80px; height: auto;">
-        <h2 style="margin: 0.5rem 0 0 0; color: var(--primary-color);">KENIKOOL TECH WORLD</h2>
-        <p style="margin: 0.25rem 0 0 0; color: #666;">Transforming Ideas into Digital Reality</p>
+    <div style="text-align: center; padding: 2rem 0; background: white">
+      <img
+        src="assets/kenikool-logo-1-geometric.png"
+        alt="Kenikool Logo"
+        style="width: 80px; height: auto"
+      />
+      <h2 style="margin: 0.5rem 0 0 0; color: var(--primary-color)">
+        KENIKOOL TECH WORLD
+      </h2>
+      <p style="margin: 0.25rem 0 0 0; color: #666">
+        Transforming Ideas into Digital Reality
+      </p>
     </div>
 
-    
     <div class="container">
-        <div class="content">
-            <h1>SOFTWARE DEVELOPMENT AGREEMENT</h1>
-<p><strong>Contract Number:</strong> [CONTRACT-XXXX]<br />
-<strong>Date:</strong> [DATE]</p>
-<hr />
-<h2>PARTIES</h2>
-<p><strong>SERVICE PROVIDER:</strong><br />
-Kenikool Tech World<br />
-Email: kenikooltechworld@gmail.com<br />
-Phone: 09128176313<br />
-(Hereinafter referred to as "Developer")</p>
-<p><strong>CLIENT:</strong><br />
-[Client Name]<br />
-[Client Address]<br />
-[Client Email]<br />
-[Client Phone]<br />
-(Hereinafter referred to as "Client")</p>
-<hr />
-<h2>1. PROJECT OVERVIEW</h2>
-<h3>1.1 Project Name</h3>
-<p>[Project Name]</p>
-<h3>1.2 Project Description</h3>
-<p>[Brief description of the software/application to be developed]</p>
-<h3>1.3 Project Type</h3>
-<p>☐ Mobile Application (iOS/Android)<br />
-☐ Web Application<br />
-☐ Custom Software Solution<br />
-☐ UI/UX Design<br />
-☐ Other: <strong><em>*</em>*___</strong>****</p>
-<hr />
-<h2>2. SCOPE OF WORK</h2>
-<h3>2.1 Deliverables</h3>
-<p>The Developer agrees to deliver the following:</p>
-<ol>
-<li>[Deliverable 1]</li>
-<li>[Deliverable 2]</li>
-<li>[Deliverable 3]</li>
-<li>[Add more as needed]</li>
-</ol>
-<h3>2.2 Features &amp; Functionality</h3>
-<p>[Detailed list of features and functionality to be included]</p>
-<h3>2.3 Exclusions</h3>
-<p>The following are explicitly excluded from this agreement:</p>
-<ul>
-<li>[Exclusion 1]</li>
-<li>[Exclusion 2]</li>
-<li>[Add more as needed]</li>
-</ul>
-<hr />
-<h2>3. TIMELINE &amp; MILESTONES</h2>
-<h3>3.1 Project Duration</h3>
-<p><strong>Start Date:</strong> [DATE]<br />
-<strong>Estimated Completion Date:</strong> [DATE]<br />
-<strong>Total Duration:</strong> [X] weeks/months</p>
-<h3>3.2 Milestones</h3>
-<table>
-<thead>
-<tr>
-<th>Milestone</th>
-<th>Description</th>
-<th>Deadline</th>
-<th>Payment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Project Kickoff &amp; Requirements</td>
-<td>[DATE]</td>
-<td>[AMOUNT]</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Design Approval</td>
-<td>[DATE]</td>
-<td>[AMOUNT]</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Development Phase 1</td>
-<td>[DATE]</td>
-<td>[AMOUNT]</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Testing &amp; QA</td>
-<td>[DATE]</td>
-<td>[AMOUNT]</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Final Delivery &amp; Launch</td>
-<td>[DATE]</td>
-<td>[AMOUNT]</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2>4. PAYMENT TERMS</h2>
-<h3>4.1 Total Project Cost</h3>
-<p><strong>Total Amount:</strong> ₦[AMOUNT] (Naira)</p>
-<h3>4.2 Payment Schedule</h3>
-<ul>
-<li><strong>Initial Deposit (40%):</strong> ₦[AMOUNT] - Due upon contract signing</li>
-<li><strong>Midpoint Payment (30%):</strong> ₦[AMOUNT] - Due upon [milestone]</li>
-<li><strong>Final Payment (30%):</strong> ₦[AMOUNT] - Due upon project completion</li>
-</ul>
-<h3>4.3 Payment Method</h3>
-<p>Payments shall be made via:
-☐ Bank Transfer<br />
-☐ Mobile Money<br />
-☐ Other: <strong><em>*</em>*___</strong>****</p>
-<p><strong>Account Details:</strong><br />
-[Bank Name]<br />
-[Account Number]<br />
-[Account Name]</p>
-<h3>4.4 Late Payment</h3>
-<p>Late payments will incur a fee of [X]% per week after the due date.</p>
-<hr />
-<h2>5. INTELLECTUAL PROPERTY RIGHTS</h2>
-<h3>5.1 Ownership</h3>
-<p>Upon full payment, all intellectual property rights, including source code, designs, and documentation, shall be transferred to the Client.</p>
-<h3>5.2 Developer Portfolio Rights</h3>
-<p>The Developer reserves the right to:</p>
-<ul>
-<li>Display the project in their portfolio</li>
-<li>Use the project as a case study</li>
-<li>Reference the Client as a client (with permission)</li>
-</ul>
-<h3>5.3 Third-Party Components</h3>
-<p>Any third-party libraries, frameworks, or components used remain under their respective licenses.</p>
-<hr />
-<h2>6. CONFIDENTIALITY</h2>
-<p>Both parties agree to keep confidential all proprietary information shared during the project, including but not limited to:</p>
-<ul>
-<li>Business plans and strategies</li>
-<li>Technical specifications</li>
-<li>Source code</li>
-<li>User data</li>
-<li>Financial information</li>
-</ul>
-<p>This confidentiality obligation shall survive the termination of this agreement.</p>
-<hr />
-<h2>7. WARRANTIES &amp; SUPPORT</h2>
-<h3>7.1 Warranty Period</h3>
-<p>The Developer provides a <strong>[30/60/90]-day</strong> warranty period from the date of final delivery, during which:</p>
-<ul>
-<li>Bug fixes will be provided at no additional cost</li>
-<li>Minor adjustments will be made as needed</li>
-<li>Technical support will be available</li>
-</ul>
-<h3>7.2 Post-Warranty Support</h3>
-<p>After the warranty period, ongoing support and maintenance can be arranged under a separate agreement.</p>
-<h3>7.3 Limitations</h3>
-<p>The warranty does not cover:</p>
-<ul>
-<li>Issues caused by Client modifications</li>
-<li>Third-party service failures</li>
-<li>Hosting or infrastructure issues</li>
-<li>Feature additions or enhancements</li>
-</ul>
-<hr />
-<h2>8. TESTING &amp; ACCEPTANCE</h2>
-<h3>8.1 Testing Phase</h3>
-<p>The Developer will conduct thorough testing before delivery, including:</p>
-<ul>
-<li>Functional testing</li>
-<li>Performance testing</li>
-<li>Security testing</li>
-<li>User acceptance testing (UAT)</li>
-</ul>
-<h3>8.2 Client Acceptance</h3>
-<p>The Client will have <strong>[7/14]</strong> days to review and test the deliverables. Acceptance will be deemed complete if:</p>
-<ul>
-<li>No major issues are reported within the review period</li>
-<li>Client provides written acceptance</li>
-<li>Final payment is received</li>
-</ul>
-<h3>8.3 Change Requests</h3>
-<p>Changes requested after acceptance will be treated as new work and billed separately.</p>
-<hr />
-<h2>9. REVISIONS &amp; CHANGE REQUESTS</h2>
-<h3>9.1 Included Revisions</h3>
-<p>This agreement includes <strong>[X]</strong> rounds of revisions for:</p>
-<ul>
-<li>Design mockups</li>
-<li>UI/UX elements</li>
-<li>Minor functionality adjustments</li>
-</ul>
-<h3>9.2 Additional Changes</h3>
-<p>Changes beyond the agreed scope will be:</p>
-<ul>
-<li>Documented in writing</li>
-<li>Quoted separately</li>
-<li>Subject to timeline adjustments</li>
-<li>Billed at ₦[RATE] per hour or as a fixed fee</li>
-</ul>
-<hr />
-<h2>10. CLIENT RESPONSIBILITIES</h2>
-<p>The Client agrees to:</p>
-<ul>
-<li>Provide all necessary information, content, and assets in a timely manner</li>
-<li>Respond to requests for feedback within <strong>[X]</strong> business days</li>
-<li>Designate a primary point of contact</li>
-<li>Provide access to necessary accounts, servers, or systems</li>
-<li>Make payments according to the agreed schedule</li>
-</ul>
-<h3>10.1 Delays Due to Client</h3>
-<p>Delays caused by the Client may result in:</p>
-<ul>
-<li>Timeline extensions</li>
-<li>Additional costs</li>
-<li>Project suspension</li>
-</ul>
-<hr />
-<h2>11. TERMINATION</h2>
-<h3>11.1 Termination by Client</h3>
-<p>The Client may terminate this agreement with <strong>[14/30]</strong> days written notice. In such case:</p>
-<ul>
-<li>All work completed to date becomes property of the Client</li>
-<li>Client must pay for all work completed plus [X]% of remaining balance</li>
-<li>All deliverables in current state will be provided</li>
-</ul>
-<h3>11.2 Termination by Developer</h3>
-<p>The Developer may terminate this agreement if:</p>
-<ul>
-<li>Client fails to make payments as scheduled</li>
-<li>Client fails to provide necessary information after <strong>[X]</strong> days</li>
-<li>Client breaches any terms of this agreement</li>
-</ul>
-<h3>11.3 Effect of Termination</h3>
-<p>Upon termination:</p>
-<ul>
-<li>All work stops immediately</li>
-<li>Final invoice will be issued</li>
-<li>Deliverables will be provided upon payment</li>
-<li>Confidentiality obligations continue</li>
-</ul>
-<hr />
-<h2>12. LIMITATION OF LIABILITY</h2>
-<h3>12.1 Developer Liability</h3>
-<p>The Developer's total liability shall not exceed the total amount paid under this agreement.</p>
-<h3>12.2 Excluded Damages</h3>
-<p>The Developer shall not be liable for:</p>
-<ul>
-<li>Indirect or consequential damages</li>
-<li>Loss of profits or revenue</li>
-<li>Data loss (Client responsible for backups)</li>
-<li>Third-party claims</li>
-</ul>
-<h3>12.3 Force Majeure</h3>
-<p>Neither party shall be liable for delays or failures due to circumstances beyond their reasonable control.</p>
-<hr />
-<h2>13. HOSTING &amp; DEPLOYMENT</h2>
-<h3>13.1 Hosting Responsibility</h3>
-<p>☐ Client will arrange and pay for hosting<br />
-☐ Developer will arrange hosting (billed separately)<br />
-☐ Other: <strong><em>*</em>*___</strong>****</p>
-<h3>13.2 Deployment</h3>
-<p>The Developer will:</p>
-<ul>
-<li>Deploy the application to the agreed platform</li>
-<li>Provide deployment documentation</li>
-<li>Assist with initial setup</li>
-</ul>
-<h3>13.3 Ongoing Costs</h3>
-<p>The Client is responsible for:</p>
-<ul>
-<li>Hosting fees</li>
-<li>Domain registration</li>
-<li>SSL certificates</li>
-<li>Third-party service subscriptions</li>
-<li>App store fees</li>
-</ul>
-<hr />
-<h2>14. MAINTENANCE &amp; UPDATES</h2>
-<h3>14.1 Post-Launch Maintenance</h3>
-<p>Ongoing maintenance is available at:</p>
-<ul>
-<li><strong>Hourly Rate:</strong> ₦[RATE]/hour</li>
-<li><strong>Monthly Retainer:</strong> ₦[AMOUNT]/month</li>
-<li><strong>Annual Package:</strong> ₦[AMOUNT]/year</li>
-</ul>
-<h3>14.2 Maintenance Includes</h3>
-<ul>
-<li>Bug fixes</li>
-<li>Security updates</li>
-<li>Performance optimization</li>
-<li>Minor feature updates</li>
-<li>Technical support</li>
-</ul>
-<hr />
-<h2>15. DISPUTE RESOLUTION</h2>
-<h3>15.1 Negotiation</h3>
-<p>Any disputes shall first be attempted to be resolved through good-faith negotiation.</p>
-<h3>15.2 Mediation</h3>
-<p>If negotiation fails, parties agree to mediation before pursuing legal action.</p>
-<h3>15.3 Governing Law</h3>
-<p>This agreement shall be governed by the laws of the Federal Republic of Nigeria.</p>
-<hr />
-<h2>16. GENERAL PROVISIONS</h2>
-<h3>16.1 Entire Agreement</h3>
-<p>This agreement constitutes the entire agreement between the parties and supersedes all prior agreements.</p>
-<h3>16.2 Amendments</h3>
-<p>Any amendments must be made in writing and signed by both parties.</p>
-<h3>16.3 Assignment</h3>
-<p>Neither party may assign this agreement without written consent of the other party.</p>
-<h3>16.4 Severability</h3>
-<p>If any provision is found invalid, the remaining provisions shall continue in full force.</p>
-<h3>16.5 Notices</h3>
-<p>All notices shall be sent to the addresses listed at the beginning of this agreement.</p>
-<hr />
-<h2>17. SIGNATURES</h2>
-<p>By signing below, both parties agree to the terms and conditions outlined in this agreement.</p>
-<p><strong>DEVELOPER:</strong></p>
-<p>Signature: <strong><em>*</em></strong><strong><em>___</em></strong><strong><em>*</em></strong><br />
-Name: [Developer Name]<br />
-Title: [Title]<br />
-Date: <strong><em>*</em></strong><strong><em>___</em></strong><strong><em>*</em></strong></p>
-<p><strong>CLIENT:</strong></p>
-<p>Signature: <strong><em>*</em></strong><strong><em>___</em></strong><strong><em>*</em></strong><br />
-Name: [Client Name]<br />
-Title: [Title]<br />
-Date: <strong><em>*</em></strong><strong><em>___</em></strong><strong><em>*</em></strong></p>
-<hr />
-<h2>APPENDIX A: TECHNICAL SPECIFICATIONS</h2>
-<p>[Attach detailed technical specifications, wireframes, mockups, or other relevant documents]</p>
-<hr />
-<h2>APPENDIX B: PAYMENT SCHEDULE</h2>
-<p>[Detailed payment breakdown if needed]</p>
-<hr />
-<p><strong>Contract prepared by:</strong> Kenikool Tech World<br />
-<strong>Email:</strong> kenikooltechworld@gmail.com<br />
-<strong>Phone:</strong> 09128176313</p>
-<hr />
-<p><em>This is a legally binding agreement. Both parties should review carefully and seek legal counsel if needed before signing.</em></p>
-        </div>
+      <div class="content">
+        <h1>SOFTWARE DEVELOPMENT AGREEMENT</h1>
+        <p>
+          <strong>Contract Number:</strong> [CONTRACT-XXXX]<br />
+          <strong>Date:</strong> [DATE]
+        </p>
+        <hr />
+        <h2>PARTIES</h2>
+        <p>
+          <strong>SERVICE PROVIDER:</strong><br />
+          Kenikool Tech World<br />
+          Email: kenikooltechworld@gmail.com<br />
+          Phone: 09128176313<br />
+          (Hereinafter referred to as "Developer")
+        </p>
+        <p>
+          <strong>CLIENT:</strong><br />
+          [Client Name]<br />
+          [Client Address]<br />
+          [Client Email]<br />
+          [Client Phone]<br />
+          (Hereinafter referred to as "Client")
+        </p>
+        <hr />
+        <h2>1. PROJECT OVERVIEW</h2>
+        <h3>1.1 Project Name</h3>
+        <p>[Project Name]</p>
+        <h3>1.2 Project Description</h3>
+        <p>[Brief description of the software/application to be developed]</p>
+        <h3>1.3 Project Type</h3>
+        <p>
+          ☐ Mobile Application (iOS/Android)<br />
+          ☐ Web Application<br />
+          ☐ Custom Software Solution<br />
+          ☐ UI/UX Design<br />
+          ☐ Other: <strong><em>*</em>*___</strong>****
+        </p>
+        <hr />
+        <h2>2. SCOPE OF WORK</h2>
+        <h3>2.1 Deliverables</h3>
+        <p>The Developer agrees to deliver the following:</p>
+        <ol>
+          <li>[Deliverable 1]</li>
+          <li>[Deliverable 2]</li>
+          <li>[Deliverable 3]</li>
+          <li>[Add more as needed]</li>
+        </ol>
+        <h3>2.2 Features &amp; Functionality</h3>
+        <p>[Detailed list of features and functionality to be included]</p>
+        <h3>2.3 Exclusions</h3>
+        <p>The following are explicitly excluded from this agreement:</p>
+        <ul>
+          <li>[Exclusion 1]</li>
+          <li>[Exclusion 2]</li>
+          <li>[Add more as needed]</li>
+        </ul>
+        <hr />
+        <h2>3. TIMELINE &amp; MILESTONES</h2>
+        <h3>3.1 Project Duration</h3>
+        <p>
+          <strong>Start Date:</strong> [DATE]<br />
+          <strong>Estimated Completion Date:</strong> [DATE]<br />
+          <strong>Total Duration:</strong> [X] weeks/months
+        </p>
+        <h3>3.2 Milestones</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Milestone</th>
+              <th>Description</th>
+              <th>Deadline</th>
+              <th>Payment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Project Kickoff &amp; Requirements</td>
+              <td>[DATE]</td>
+              <td>[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Design Approval</td>
+              <td>[DATE]</td>
+              <td>[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Development Phase 1</td>
+              <td>[DATE]</td>
+              <td>[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Testing &amp; QA</td>
+              <td>[DATE]</td>
+              <td>[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Final Delivery &amp; Launch</td>
+              <td>[DATE]</td>
+              <td>[AMOUNT]</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <h2>4. PAYMENT TERMS</h2>
+        <h3>4.1 Total Project Cost</h3>
+        <p><strong>Total Amount:</strong> ₦[AMOUNT] (Naira)</p>
+        <h3>4.2 Payment Schedule</h3>
+        <ul>
+          <li>
+            <strong>Initial Deposit (40%):</strong> ₦[AMOUNT] - Due upon
+            contract signing
+          </li>
+          <li>
+            <strong>Midpoint Payment (30%):</strong> ₦[AMOUNT] - Due upon
+            [milestone]
+          </li>
+          <li>
+            <strong>Final Payment (30%):</strong> ₦[AMOUNT] - Due upon project
+            completion
+          </li>
+        </ul>
+        <h3>4.3 Payment Method</h3>
+        <p>
+          Payments shall be made via: ☐ Bank Transfer<br />
+          ☐ Mobile Money<br />
+          ☐ Other: <strong><em>*</em>*___</strong>****
+        </p>
+        <p>
+          <strong>Account Details:</strong><br />
+          [Bank Name]<br />
+          [Account Number]<br />
+          [Account Name]
+        </p>
+        <h3>4.4 Late Payment</h3>
+        <p>
+          Late payments will incur a fee of [X]% per week after the due date.
+        </p>
+        <hr />
+        <h2>5. INTELLECTUAL PROPERTY RIGHTS</h2>
+        <h3>5.1 Ownership</h3>
+        <p>
+          Upon full payment, all intellectual property rights, including source
+          code, designs, and documentation, shall be transferred to the Client.
+        </p>
+        <h3>5.2 Developer Portfolio Rights</h3>
+        <p>The Developer reserves the right to:</p>
+        <ul>
+          <li>Display the project in their portfolio</li>
+          <li>Use the project as a case study</li>
+          <li>Reference the Client as a client (with permission)</li>
+        </ul>
+        <h3>5.3 Third-Party Components</h3>
+        <p>
+          Any third-party libraries, frameworks, or components used remain under
+          their respective licenses.
+        </p>
+        <hr />
+        <h2>6. CONFIDENTIALITY</h2>
+        <p>
+          Both parties agree to keep confidential all proprietary information
+          shared during the project, including but not limited to:
+        </p>
+        <ul>
+          <li>Business plans and strategies</li>
+          <li>Technical specifications</li>
+          <li>Source code</li>
+          <li>User data</li>
+          <li>Financial information</li>
+        </ul>
+        <p>
+          This confidentiality obligation shall survive the termination of this
+          agreement.
+        </p>
+        <hr />
+        <h2>7. WARRANTIES &amp; SUPPORT</h2>
+        <h3>7.1 Warranty Period</h3>
+        <p>
+          The Developer provides a <strong>[30/60/90]-day</strong> warranty
+          period from the date of final delivery, during which:
+        </p>
+        <ul>
+          <li>Bug fixes will be provided at no additional cost</li>
+          <li>Minor adjustments will be made as needed</li>
+          <li>Technical support will be available</li>
+        </ul>
+        <h3>7.2 Post-Warranty Support</h3>
+        <p>
+          After the warranty period, ongoing support and maintenance can be
+          arranged under a separate agreement.
+        </p>
+        <h3>7.3 Limitations</h3>
+        <p>The warranty does not cover:</p>
+        <ul>
+          <li>Issues caused by Client modifications</li>
+          <li>Third-party service failures</li>
+          <li>Hosting or infrastructure issues</li>
+          <li>Feature additions or enhancements</li>
+        </ul>
+        <hr />
+        <h2>8. TESTING &amp; ACCEPTANCE</h2>
+        <h3>8.1 Testing Phase</h3>
+        <p>
+          The Developer will conduct thorough testing before delivery,
+          including:
+        </p>
+        <ul>
+          <li>Functional testing</li>
+          <li>Performance testing</li>
+          <li>Security testing</li>
+          <li>User acceptance testing (UAT)</li>
+        </ul>
+        <h3>8.2 Client Acceptance</h3>
+        <p>
+          The Client will have <strong>[7/14]</strong> days to review and test
+          the deliverables. Acceptance will be deemed complete if:
+        </p>
+        <ul>
+          <li>No major issues are reported within the review period</li>
+          <li>Client provides written acceptance</li>
+          <li>Final payment is received</li>
+        </ul>
+        <h3>8.3 Change Requests</h3>
+        <p>
+          Changes requested after acceptance will be treated as new work and
+          billed separately.
+        </p>
+        <hr />
+        <h2>9. REVISIONS &amp; CHANGE REQUESTS</h2>
+        <h3>9.1 Included Revisions</h3>
+        <p>
+          This agreement includes <strong>[X]</strong> rounds of revisions for:
+        </p>
+        <ul>
+          <li>Design mockups</li>
+          <li>UI/UX elements</li>
+          <li>Minor functionality adjustments</li>
+        </ul>
+        <h3>9.2 Additional Changes</h3>
+        <p>Changes beyond the agreed scope will be:</p>
+        <ul>
+          <li>Documented in writing</li>
+          <li>Quoted separately</li>
+          <li>Subject to timeline adjustments</li>
+          <li>Billed at ₦[RATE] per hour or as a fixed fee</li>
+        </ul>
+        <hr />
+        <h2>10. CLIENT RESPONSIBILITIES</h2>
+        <p>The Client agrees to:</p>
+        <ul>
+          <li>
+            Provide all necessary information, content, and assets in a timely
+            manner
+          </li>
+          <li>
+            Respond to requests for feedback within
+            <strong>[X]</strong> business days
+          </li>
+          <li>Designate a primary point of contact</li>
+          <li>Provide access to necessary accounts, servers, or systems</li>
+          <li>Make payments according to the agreed schedule</li>
+        </ul>
+        <h3>10.1 Delays Due to Client</h3>
+        <p>Delays caused by the Client may result in:</p>
+        <ul>
+          <li>Timeline extensions</li>
+          <li>Additional costs</li>
+          <li>Project suspension</li>
+        </ul>
+        <hr />
+        <h2>11. TERMINATION</h2>
+        <h3>11.1 Termination by Client</h3>
+        <p>
+          The Client may terminate this agreement with
+          <strong>[14/30]</strong> days written notice. In such case:
+        </p>
+        <ul>
+          <li>All work completed to date becomes property of the Client</li>
+          <li>
+            Client must pay for all work completed plus [X]% of remaining
+            balance
+          </li>
+          <li>All deliverables in current state will be provided</li>
+        </ul>
+        <h3>11.2 Termination by Developer</h3>
+        <p>The Developer may terminate this agreement if:</p>
+        <ul>
+          <li>Client fails to make payments as scheduled</li>
+          <li>
+            Client fails to provide necessary information after
+            <strong>[X]</strong> days
+          </li>
+          <li>Client breaches any terms of this agreement</li>
+        </ul>
+        <h3>11.3 Effect of Termination</h3>
+        <p>Upon termination:</p>
+        <ul>
+          <li>All work stops immediately</li>
+          <li>Final invoice will be issued</li>
+          <li>Deliverables will be provided upon payment</li>
+          <li>Confidentiality obligations continue</li>
+        </ul>
+        <hr />
+        <h2>12. LIMITATION OF LIABILITY</h2>
+        <h3>12.1 Developer Liability</h3>
+        <p>
+          The Developer's total liability shall not exceed the total amount paid
+          under this agreement.
+        </p>
+        <h3>12.2 Excluded Damages</h3>
+        <p>The Developer shall not be liable for:</p>
+        <ul>
+          <li>Indirect or consequential damages</li>
+          <li>Loss of profits or revenue</li>
+          <li>Data loss (Client responsible for backups)</li>
+          <li>Third-party claims</li>
+        </ul>
+        <h3>12.3 Force Majeure</h3>
+        <p>
+          Neither party shall be liable for delays or failures due to
+          circumstances beyond their reasonable control.
+        </p>
+        <hr />
+        <h2>13. HOSTING &amp; DEPLOYMENT</h2>
+        <h3>13.1 Hosting Responsibility</h3>
+        <p>
+          ☐ Client will arrange and pay for hosting<br />
+          ☐ Developer will arrange hosting (billed separately)<br />
+          ☐ Other: <strong><em>*</em>*___</strong>****
+        </p>
+        <h3>13.2 Deployment</h3>
+        <p>The Developer will:</p>
+        <ul>
+          <li>Deploy the application to the agreed platform</li>
+          <li>Provide deployment documentation</li>
+          <li>Assist with initial setup</li>
+        </ul>
+        <h3>13.3 Ongoing Costs</h3>
+        <p>The Client is responsible for:</p>
+        <ul>
+          <li>Hosting fees</li>
+          <li>Domain registration</li>
+          <li>SSL certificates</li>
+          <li>Third-party service subscriptions</li>
+          <li>App store fees</li>
+        </ul>
+        <hr />
+        <h2>14. MAINTENANCE &amp; UPDATES</h2>
+        <h3>14.1 Post-Launch Maintenance</h3>
+        <p>Ongoing maintenance is available at:</p>
+        <ul>
+          <li><strong>Hourly Rate:</strong> ₦[RATE]/hour</li>
+          <li><strong>Monthly Retainer:</strong> ₦[AMOUNT]/month</li>
+          <li><strong>Annual Package:</strong> ₦[AMOUNT]/year</li>
+        </ul>
+        <h3>14.2 Maintenance Includes</h3>
+        <ul>
+          <li>Bug fixes</li>
+          <li>Security updates</li>
+          <li>Performance optimization</li>
+          <li>Minor feature updates</li>
+          <li>Technical support</li>
+        </ul>
+        <hr />
+        <h2>15. DISPUTE RESOLUTION</h2>
+        <h3>15.1 Negotiation</h3>
+        <p>
+          Any disputes shall first be attempted to be resolved through
+          good-faith negotiation.
+        </p>
+        <h3>15.2 Mediation</h3>
+        <p>
+          If negotiation fails, parties agree to mediation before pursuing legal
+          action.
+        </p>
+        <h3>15.3 Governing Law</h3>
+        <p>
+          This agreement shall be governed by the laws of the Federal Republic
+          of Nigeria.
+        </p>
+        <hr />
+        <h2>16. GENERAL PROVISIONS</h2>
+        <h3>16.1 Entire Agreement</h3>
+        <p>
+          This agreement constitutes the entire agreement between the parties
+          and supersedes all prior agreements.
+        </p>
+        <h3>16.2 Amendments</h3>
+        <p>
+          Any amendments must be made in writing and signed by both parties.
+        </p>
+        <h3>16.3 Assignment</h3>
+        <p>
+          Neither party may assign this agreement without written consent of the
+          other party.
+        </p>
+        <h3>16.4 Severability</h3>
+        <p>
+          If any provision is found invalid, the remaining provisions shall
+          continue in full force.
+        </p>
+        <h3>16.5 Notices</h3>
+        <p>
+          All notices shall be sent to the addresses listed at the beginning of
+          this agreement.
+        </p>
+        <hr />
+        <h2>17. SIGNATURES</h2>
+        <p>
+          By signing below, both parties agree to the terms and conditions
+          outlined in this agreement.
+        </p>
+        <p><strong>DEVELOPER:</strong></p>
+        <p>
+          Signature: <strong><em>*</em></strong
+          ><strong><em>___</em></strong
+          ><strong><em>*</em></strong
+          ><br />
+          Name: [Developer Name]<br />
+          Title: [Title]<br />
+          Date: <strong><em>*</em></strong
+          ><strong><em>___</em></strong
+          ><strong><em>*</em></strong>
+        </p>
+        <p><strong>CLIENT:</strong></p>
+        <p>
+          Signature: <strong><em>*</em></strong
+          ><strong><em>___</em></strong
+          ><strong><em>*</em></strong
+          ><br />
+          Name: [Client Name]<br />
+          Title: [Title]<br />
+          Date: <strong><em>*</em></strong
+          ><strong><em>___</em></strong
+          ><strong><em>*</em></strong>
+        </p>
+        <hr />
+        <h2>APPENDIX A: TECHNICAL SPECIFICATIONS</h2>
+        <p>
+          [Attach detailed technical specifications, wireframes, mockups, or
+          other relevant documents]
+        </p>
+        <hr />
+        <h2>APPENDIX B: PAYMENT SCHEDULE</h2>
+        <p>[Detailed payment breakdown if needed]</p>
+        <hr />
+        <p>
+          <strong>Contract prepared by:</strong> Kenikool Tech World<br />
+          <strong>Email:</strong> kenikooltechworld@gmail.com<br />
+          <strong>Phone:</strong> 09128176313
+        </p>
+        <hr />
+        <p>
+          <em
+            >This is a legally binding agreement. Both parties should review
+            carefully and seek legal counsel if needed before signing.</em
+          >
+        </p>
+      </div>
     </div>
 
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>

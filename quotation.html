@@ -1,597 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quotation Template - Kenikool Tech World</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f8f9fa;
-        }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f8f9fa;
+      }
+      .back-btn {
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+        background: var(--primary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        z-index: 1000;
+      }
+      .back-btn:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .content {
+        padding: 2rem;
+      }
+      h1 {
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 3px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+      }
+      h2 {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin: 2rem 0 1rem 0;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 0.5rem;
+      }
+      h3 {
+        color: var(--dark-color);
+        font-size: 1.5rem;
+        margin: 1.5rem 0 1rem 0;
+      }
+      h4 {
+        color: var(--primary-color);
+        font-size: 1.25rem;
+        margin: 1rem 0 0.5rem 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 0.75rem;
+        text-align: left;
+      }
+      th {
+        background: var(--primary-color);
+        color: white;
+      }
+      tr:nth-child(even) {
+        background: #f8f9fa;
+      }
+      ul,
+      ol {
+        margin: 1rem 0;
+        padding-left: 2rem;
+      }
+      li {
+        margin: 0.5rem 0;
+      }
+      strong {
+        color: var(--dark-color);
+      }
+      code {
+        background: #f4f4f4;
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.25rem;
+        font-family: "Courier New", monospace;
+      }
+      blockquote {
+        border-left: 4px solid var(--primary-color);
+        padding-left: 1rem;
+        margin: 1rem 0;
+        font-style: italic;
+        background: #f8f9fa;
+        padding: 1rem;
+      }
+      hr {
+        border: none;
+        border-top: 2px solid #e0e0e0;
+        margin: 2rem 0;
+      }
+      @media print {
         .back-btn {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            z-index: 1000;
+          display: none;
         }
-        .back-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .content {
-            padding: 2rem;
-        }
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-        }
-        h2 {
-            color: var(--primary-color);
-            font-size: 2rem;
-            margin: 2rem 0 1rem 0;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 0.5rem;
-        }
-        h3 {
-            color: var(--dark-color);
-            font-size: 1.5rem;
-            margin: 1.5rem 0 1rem 0;
-        }
-        h4 {
-            color: var(--primary-color);
-            font-size: 1.25rem;
-            margin: 1rem 0 0.5rem 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 0.75rem;
-            text-align: left;
-        }
-        th {
-            background: var(--primary-color);
-            color: white;
-        }
-        tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-        ul, ol {
-            margin: 1rem 0;
-            padding-left: 2rem;
-        }
-        li {
-            margin: 0.5rem 0;
-        }
-        strong {
-            color: var(--dark-color);
-        }
-        code {
-            background: #f4f4f4;
-            padding: 0.2rem 0.4rem;
-            border-radius: 0.25rem;
-            font-family: 'Courier New', monospace;
-        }
-        blockquote {
-            border-left: 4px solid var(--primary-color);
-            padding-left: 1rem;
-            margin: 1rem 0;
-            font-style: italic;
-            background: #f8f9fa;
-            padding: 1rem;
-        }
-        hr {
-            border: none;
-            border-top: 2px solid #e0e0e0;
-            margin: 2rem 0;
-        }
-        @media print {
-            .back-btn {
-                display: none;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <a href="index.html" class="back-btn">← Back to Portfolio</a>
-    <div style="text-align: center; padding: 2rem 0; background: white;">
-        <img src="ASSETS/kenikool-logo-1-geometric.png" alt="Kenikool Logo" style="width: 80px; height: auto;">
-        <h2 style="margin: 0.5rem 0 0 0; color: var(--primary-color);">KENIKOOL TECH WORLD</h2>
-        <p style="margin: 0.25rem 0 0 0; color: #666;">Transforming Ideas into Digital Reality</p>
+    <div style="text-align: center; padding: 2rem 0; background: white">
+      <img
+        src="assets/kenikool-logo-1-geometric.png"
+        alt="Kenikool Logo"
+        style="width: 80px; height: auto"
+      />
+      <h2 style="margin: 0.5rem 0 0 0; color: var(--primary-color)">
+        KENIKOOL TECH WORLD
+      </h2>
+      <p style="margin: 0.25rem 0 0 0; color: #666">
+        Transforming Ideas into Digital Reality
+      </p>
     </div>
 
-    
     <div class="container">
-        <div class="content">
-            <h1>PROJECT QUOTATION</h1>
-<hr />
-<h2>KENIKOOL TECH WORLD</h2>
-<p><strong>Professional Software Development Services</strong></p>
-<p><strong>Email:</strong> kenikooltechworld@gmail.com<br />
-<strong>Phone:</strong> 09128176313<br />
-<strong>Website:</strong> www.kenikooltech.com</p>
-<hr />
-<p><strong>Quotation Number:</strong> QUOTE-[XXXX]<br />
-<strong>Date:</strong> [DATE]<br />
-<strong>Valid Until:</strong> [DATE] (30 days from issue)</p>
-<hr />
-<h2>PREPARED FOR</h2>
-<p><strong>Client Name:</strong> [Client Name]<br />
-<strong>Company:</strong> [Company Name]<br />
-<strong>Email:</strong> [Client Email]<br />
-<strong>Phone:</strong> [Client Phone]<br />
-<strong>Address:</strong> [Client Address]</p>
-<hr />
-<h2>PROJECT OVERVIEW</h2>
-<h3>Project Name</h3>
-<p>[Project Name]</p>
-<h3>Project Type</h3>
-<p>☐ Mobile Application<br />
-☐ Web Application<br />
-☐ Custom Software<br />
-☐ UI/UX Design<br />
-☐ Other: <strong><em>*</em>*___</strong>****</p>
-<h3>Project Description</h3>
-<p>[Brief description of what the client wants to build]</p>
-<hr />
-<h2>SCOPE OF WORK</h2>
-<h3>Deliverables</h3>
-<h4>1. [Deliverable Category 1]</h4>
-<ul>
-<li>[Specific deliverable 1.1]</li>
-<li>[Specific deliverable 1.2]</li>
-<li>[Specific deliverable 1.3]</li>
-</ul>
-<h4>2. [Deliverable Category 2]</h4>
-<ul>
-<li>[Specific deliverable 2.1]</li>
-<li>[Specific deliverable 2.2]</li>
-<li>[Specific deliverable 2.3]</li>
-</ul>
-<h4>3. [Deliverable Category 3]</h4>
-<ul>
-<li>[Specific deliverable 3.1]</li>
-<li>[Specific deliverable 3.2]</li>
-<li>[Specific deliverable 3.3]</li>
-</ul>
-<h3>Features &amp; Functionality</h3>
-<p><strong>Core Features:</strong></p>
-<ol>
-<li>[Feature 1] - [Brief description]</li>
-<li>[Feature 2] - [Brief description]</li>
-<li>[Feature 3] - [Brief description]</li>
-<li>[Feature 4] - [Brief description]</li>
-<li>[Feature 5] - [Brief description]</li>
-</ol>
-<p><strong>Additional Features:</strong></p>
-<ol>
-<li>[Feature 1] - [Brief description]</li>
-<li>[Feature 2] - [Brief description]</li>
-</ol>
-<hr />
-<h2>TECHNICAL SPECIFICATIONS</h2>
-<h3>Platform</h3>
-<p>☐ iOS (iPhone/iPad)<br />
-☐ Android (Phone/Tablet)<br />
-☐ Web (Desktop/Mobile)<br />
-☐ Cross-Platform</p>
-<h3>Technology Stack</h3>
-<ul>
-<li><strong>Frontend:</strong> [React Native / React / Vue.js / etc.]</li>
-<li><strong>Backend:</strong> [Node.js / Express / etc.]</li>
-<li><strong>Database:</strong> [MongoDB / PostgreSQL / Firebase / etc.]</li>
-<li><strong>Cloud/Hosting:</strong> [AWS / Google Cloud / Azure / etc.]</li>
-<li><strong>Other:</strong> [Additional technologies]</li>
-</ul>
-<h3>Integrations</h3>
-<ul>
-<li>[Third-party service 1]</li>
-<li>[Third-party service 2]</li>
-<li>[API integrations]</li>
-</ul>
-<hr />
-<h2>PROJECT TIMELINE</h2>
-<h3>Estimated Duration</h3>
-<p><strong>Total Time:</strong> [X] weeks / [Y] months</p>
-<h3>Project Phases</h3>
-<table>
-<thead>
-<tr>
-<th>Phase</th>
-<th>Description</th>
-<th>Duration</th>
-<th>Deliverable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1. Discovery &amp; Planning</td>
-<td>Requirements gathering, project planning</td>
-<td>[X] weeks</td>
-<td>Project plan, specifications</td>
-</tr>
-<tr>
-<td>2. Design</td>
-<td>UI/UX design, wireframes, mockups</td>
-<td>[X] weeks</td>
-<td>Design files, prototype</td>
-</tr>
-<tr>
-<td>3. Development</td>
-<td>Frontend &amp; backend development</td>
-<td>[X] weeks</td>
-<td>Working application</td>
-</tr>
-<tr>
-<td>4. Testing &amp; QA</td>
-<td>Testing, bug fixes, optimization</td>
-<td>[X] weeks</td>
-<td>Tested application</td>
-</tr>
-<tr>
-<td>5. Deployment</td>
-<td>Launch, app store submission</td>
-<td>[X] weeks</td>
-<td>Live application</td>
-</tr>
-<tr>
-<td>6. Training &amp; Handover</td>
-<td>Documentation, training</td>
-<td>[X] weeks</td>
-<td>Documentation, training</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Estimated Start Date:</strong> [DATE]<br />
-<strong>Estimated Completion Date:</strong> [DATE]</p>
-<hr />
-<h2>COST BREAKDOWN</h2>
-<h3>Development Costs</h3>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Description</th>
-<th>Quantity</th>
-<th>Rate</th>
-<th>Amount</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Discovery &amp; Planning</strong></td>
-<td>Requirements analysis, project planning</td>
-<td>[X] hours</td>
-<td>₦[RATE]</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>UI/UX Design</strong></td>
-<td>Wireframes, mockups, design system</td>
-<td>[X] hours</td>
-<td>₦[RATE]</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Frontend Development</strong></td>
-<td>User interface implementation</td>
-<td>[X] hours</td>
-<td>₦[RATE]</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Backend Development</strong></td>
-<td>Server, database, APIs</td>
-<td>[X] hours</td>
-<td>₦[RATE]</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Testing &amp; QA</strong></td>
-<td>Quality assurance, bug fixes</td>
-<td>[X] hours</td>
-<td>₦[RATE]</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Deployment</strong></td>
-<td>App store submission, server setup</td>
-<td>[X] hours</td>
-<td>₦[RATE]</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Project Management</strong></td>
-<td>Coordination, communication</td>
-<td>[X] hours</td>
-<td>₦[RATE]</td>
-<td>₦[AMOUNT]</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Subtotal:</strong> ₦[AMOUNT]</p>
-<h3>Additional Costs (Optional)</h3>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Description</th>
-<th>Amount</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>App Store Fees</td>
-<td>Apple Developer ($99/year)</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td>Google Play Fees</td>
-<td>One-time fee ($25)</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td>Domain Registration</td>
-<td>.com domain (1 year)</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td>SSL Certificate</td>
-<td>Security certificate (1 year)</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td>Hosting (Initial)</td>
-<td>3 months hosting</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td>Third-party Services</td>
-<td>[Service name] subscription</td>
-<td>₦[AMOUNT]</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Additional Costs Total:</strong> ₦[AMOUNT]</p>
-<hr />
-<h2>PRICING SUMMARY</h2>
-<table>
-<thead>
-<tr>
-<th>Description</th>
-<th>Amount</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Development Costs</strong></td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Additional Costs</strong></td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Subtotal</strong></td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Discount (if applicable)</strong></td>
-<td>-₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>TAX/VAT (if applicable)</strong></td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>TOTAL PROJECT COST</strong></td>
-<td><strong>₦[AMOUNT]</strong></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2>PAYMENT TERMS</h2>
-<h3>Payment Schedule</h3>
-<p><strong>Option 1: Standard Payment Plan</strong></p>
-<ul>
-<li><strong>40% Deposit:</strong> ₦[AMOUNT] - Upon contract signing</li>
-<li><strong>30% Midpoint:</strong> ₦[AMOUNT] - Upon design approval / development milestone</li>
-<li><strong>30% Final:</strong> ₦[AMOUNT] - Upon project completion and delivery</li>
-</ul>
-<p><strong>Option 2: Milestone-Based Payment</strong></p>
-<ul>
-<li><strong>Phase 1 (Discovery &amp; Design):</strong> ₦[AMOUNT]</li>
-<li><strong>Phase 2 (Development):</strong> ₦[AMOUNT]</li>
-<li><strong>Phase 3 (Testing &amp; Launch):</strong> ₦[AMOUNT]</li>
-</ul>
-<h3>Payment Methods</h3>
-<ul>
-<li>Bank Transfer</li>
-<li>Mobile Money</li>
-<li>[Other payment methods]</li>
-</ul>
-<h3>Payment Terms</h3>
-<ul>
-<li>Invoices are due within [X] days of issue</li>
-<li>Late payments may incur additional fees</li>
-<li>Work may be paused for overdue payments</li>
-</ul>
-<hr />
-<h2>WHAT'S INCLUDED</h2>
-<h3>✓ Included in This Quote</h3>
-<ul>
-<li>[x] rounds of design revisions</li>
-<li>Source code and documentation</li>
-<li>[X]-day warranty period for bug fixes</li>
-<li>App store submission assistance (if applicable)</li>
-<li>Basic training and handover</li>
-<li>[x] hours of post-launch support</li>
-</ul>
-<h3>✗ Not Included</h3>
-<ul>
-<li>Ongoing hosting and maintenance (available separately)</li>
-<li>Content creation (text, images, videos)</li>
-<li>Third-party service fees</li>
-<li>Marketing and promotion</li>
-<li>Feature additions after launch (billed separately)</li>
-</ul>
-<hr />
-<h2>POST-LAUNCH SUPPORT OPTIONS</h2>
-<h3>Option 1: Pay-As-You-Go</h3>
-<p><strong>Rate:</strong> ₦[RATE] per hour<br />
-<strong>Best for:</strong> Occasional updates and fixes</p>
-<h3>Option 2: Monthly Retainer</h3>
-<p><strong>Cost:</strong> ₦[AMOUNT] per month<br />
-<strong>Includes:</strong> [X] hours of support, priority response, monthly updates<br />
-<strong>Best for:</strong> Regular maintenance and updates</p>
-<h3>Option 3: Annual Package</h3>
-<p><strong>Cost:</strong> ₦[AMOUNT] per year (Save [X]%)<br />
-<strong>Includes:</strong> Unlimited bug fixes, security updates, [X] hours of enhancements<br />
-<strong>Best for:</strong> Long-term partnership</p>
-<hr />
-<h2>ASSUMPTIONS &amp; DEPENDENCIES</h2>
-<p>This quotation is based on the following assumptions:</p>
-<ol>
-<li>Client will provide all necessary content, assets, and information in a timely manner</li>
-<li>Client will provide feedback and approvals within [X] business days</li>
-<li>No major scope changes will be requested during development</li>
-<li>Third-party services and APIs will function as documented</li>
-<li>Client has necessary accounts and access for deployment</li>
-<li>[Add other assumptions]</li>
-</ol>
-<hr />
-<h2>EXCLUSIONS</h2>
-<p>The following are explicitly excluded from this quotation:</p>
-<ul>
-<li>[Exclusion 1]</li>
-<li>[Exclusion 2]</li>
-<li>[Exclusion 3]</li>
-<li>[Add more as needed]</li>
-</ul>
-<hr />
-<h2>TERMS &amp; CONDITIONS</h2>
-<ol>
-<li><strong>Validity:</strong> This quotation is valid for 30 days from the date of issue</li>
-<li><strong>Acceptance:</strong> A signed contract and initial deposit are required to begin work</li>
-<li><strong>Timeline:</strong> Estimated timeline assumes timely client feedback and no major scope changes</li>
-<li><strong>Changes:</strong> Scope changes may affect timeline and cost</li>
-<li><strong>Intellectual Property:</strong> Full IP rights transfer to client upon final payment</li>
-<li><strong>Warranty:</strong> [X]-day warranty for bug fixes after launch</li>
-<li><strong>Cancellation:</strong> Cancellation terms as per contract agreement</li>
-</ol>
-<hr />
-<h2>OPTIONAL ADD-ONS</h2>
-<p>Enhance your project with these optional services:</p>
-<table>
-<thead>
-<tr>
-<th>Add-On</th>
-<th>Description</th>
-<th>Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Advanced Analytics</strong></td>
-<td>Custom analytics dashboard</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Push Notifications</strong></td>
-<td>Real-time notification system</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Admin Dashboard</strong></td>
-<td>Content management system</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Multi-language Support</strong></td>
-<td>Internationalization (i18n)</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Social Media Integration</strong></td>
-<td>Login &amp; sharing features</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Payment Gateway</strong></td>
-<td>Stripe/Paystack integration</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>Advanced Security</strong></td>
-<td>Enhanced security features</td>
-<td>₦[AMOUNT]</td>
-</tr>
-<tr>
-<td><strong>API Development</strong></td>
-<td>Custom REST/GraphQL API</td>
-<td>₦[AMOUNT]</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2>NEXT STEPS</h2>
-<p>Ready to get started? Here's what happens next:</p>
-<ol>
-<li><strong>Review</strong> this quotation and let us know if you have any questions</li>
-<li><strong>Approve</strong> the quotation and scope of work</li>
-<li><strong>Sign</strong> the project contract</li>
-<li><strong>Pay</strong> the initial deposit</li>
-<li><strong>Kickoff</strong> - We'll schedule a project kickoff meeting</li>
-<li><strong>Build</strong> - We'll start bringing your vision to life!</li>
-</ol>
-<hr />
-<h2>QUESTIONS?</h2>
-<p>We're here to help! Contact us:</p>
-<p><strong>📧 Email:</strong> kenikooltechworld@gmail.com<br />
-<strong>📞 Phone:</strong> 09128176313<br />
-<strong>🌐 Website:</strong> www.kenikooltech.com</p>
-<hr />
-<h2>ACCEPTANCE</h2>
-<p>To accept this quotation and proceed with the project:</p>
-<p><strong>Client Signature:</strong> <strong><em>*</em></strong><strong><em>___</em></strong><strong><em>*</em></strong><br />
-<strong>Name:</strong> [Client Name]<br />
-<strong>Date:</strong> <strong><em>*</em></strong><strong><em>___</em></strong><strong><em>*</em></strong></p>
-<hr />
-<p><strong>Prepared by:</strong> Kenikool Tech World<br />
-<strong>Date:</strong> [DATE]<br />
-<strong>Quotation Valid Until:</strong> [DATE]</p>
-<hr />
-<p><em>Thank you for considering Kenikool Tech World for your project. We look forward to working with you!</em> 🚀</p>
-<hr />
-<p><strong>KENIKOOL TECH WORLD</strong><br />
-<em>Transforming Ideas into Digital Reality</em></p>
-        </div>
+      <div class="content">
+        <h1>PROJECT QUOTATION</h1>
+        <hr />
+        <h2>KENIKOOL TECH WORLD</h2>
+        <p><strong>Professional Software Development Services</strong></p>
+        <p>
+          <strong>Email:</strong> kenikooltechworld@gmail.com<br />
+          <strong>Phone:</strong> 09128176313<br />
+          <strong>Website:</strong> www.kenikooltech.com
+        </p>
+        <hr />
+        <p>
+          <strong>Quotation Number:</strong> QUOTE-[XXXX]<br />
+          <strong>Date:</strong> [DATE]<br />
+          <strong>Valid Until:</strong> [DATE] (30 days from issue)
+        </p>
+        <hr />
+        <h2>PREPARED FOR</h2>
+        <p>
+          <strong>Client Name:</strong> [Client Name]<br />
+          <strong>Company:</strong> [Company Name]<br />
+          <strong>Email:</strong> [Client Email]<br />
+          <strong>Phone:</strong> [Client Phone]<br />
+          <strong>Address:</strong> [Client Address]
+        </p>
+        <hr />
+        <h2>PROJECT OVERVIEW</h2>
+        <h3>Project Name</h3>
+        <p>[Project Name]</p>
+        <h3>Project Type</h3>
+        <p>
+          ☐ Mobile Application<br />
+          ☐ Web Application<br />
+          ☐ Custom Software<br />
+          ☐ UI/UX Design<br />
+          ☐ Other: <strong><em>*</em>*___</strong>****
+        </p>
+        <h3>Project Description</h3>
+        <p>[Brief description of what the client wants to build]</p>
+        <hr />
+        <h2>SCOPE OF WORK</h2>
+        <h3>Deliverables</h3>
+        <h4>1. [Deliverable Category 1]</h4>
+        <ul>
+          <li>[Specific deliverable 1.1]</li>
+          <li>[Specific deliverable 1.2]</li>
+          <li>[Specific deliverable 1.3]</li>
+        </ul>
+        <h4>2. [Deliverable Category 2]</h4>
+        <ul>
+          <li>[Specific deliverable 2.1]</li>
+          <li>[Specific deliverable 2.2]</li>
+          <li>[Specific deliverable 2.3]</li>
+        </ul>
+        <h4>3. [Deliverable Category 3]</h4>
+        <ul>
+          <li>[Specific deliverable 3.1]</li>
+          <li>[Specific deliverable 3.2]</li>
+          <li>[Specific deliverable 3.3]</li>
+        </ul>
+        <h3>Features &amp; Functionality</h3>
+        <p><strong>Core Features:</strong></p>
+        <ol>
+          <li>[Feature 1] - [Brief description]</li>
+          <li>[Feature 2] - [Brief description]</li>
+          <li>[Feature 3] - [Brief description]</li>
+          <li>[Feature 4] - [Brief description]</li>
+          <li>[Feature 5] - [Brief description]</li>
+        </ol>
+        <p><strong>Additional Features:</strong></p>
+        <ol>
+          <li>[Feature 1] - [Brief description]</li>
+          <li>[Feature 2] - [Brief description]</li>
+        </ol>
+        <hr />
+        <h2>TECHNICAL SPECIFICATIONS</h2>
+        <h3>Platform</h3>
+        <p>
+          ☐ iOS (iPhone/iPad)<br />
+          ☐ Android (Phone/Tablet)<br />
+          ☐ Web (Desktop/Mobile)<br />
+          ☐ Cross-Platform
+        </p>
+        <h3>Technology Stack</h3>
+        <ul>
+          <li>
+            <strong>Frontend:</strong> [React Native / React / Vue.js / etc.]
+          </li>
+          <li><strong>Backend:</strong> [Node.js / Express / etc.]</li>
+          <li>
+            <strong>Database:</strong> [MongoDB / PostgreSQL / Firebase / etc.]
+          </li>
+          <li>
+            <strong>Cloud/Hosting:</strong> [AWS / Google Cloud / Azure / etc.]
+          </li>
+          <li><strong>Other:</strong> [Additional technologies]</li>
+        </ul>
+        <h3>Integrations</h3>
+        <ul>
+          <li>[Third-party service 1]</li>
+          <li>[Third-party service 2]</li>
+          <li>[API integrations]</li>
+        </ul>
+        <hr />
+        <h2>PROJECT TIMELINE</h2>
+        <h3>Estimated Duration</h3>
+        <p><strong>Total Time:</strong> [X] weeks / [Y] months</p>
+        <h3>Project Phases</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Description</th>
+              <th>Duration</th>
+              <th>Deliverable</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. Discovery &amp; Planning</td>
+              <td>Requirements gathering, project planning</td>
+              <td>[X] weeks</td>
+              <td>Project plan, specifications</td>
+            </tr>
+            <tr>
+              <td>2. Design</td>
+              <td>UI/UX design, wireframes, mockups</td>
+              <td>[X] weeks</td>
+              <td>Design files, prototype</td>
+            </tr>
+            <tr>
+              <td>3. Development</td>
+              <td>Frontend &amp; backend development</td>
+              <td>[X] weeks</td>
+              <td>Working application</td>
+            </tr>
+            <tr>
+              <td>4. Testing &amp; QA</td>
+              <td>Testing, bug fixes, optimization</td>
+              <td>[X] weeks</td>
+              <td>Tested application</td>
+            </tr>
+            <tr>
+              <td>5. Deployment</td>
+              <td>Launch, app store submission</td>
+              <td>[X] weeks</td>
+              <td>Live application</td>
+            </tr>
+            <tr>
+              <td>6. Training &amp; Handover</td>
+              <td>Documentation, training</td>
+              <td>[X] weeks</td>
+              <td>Documentation, training</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <strong>Estimated Start Date:</strong> [DATE]<br />
+          <strong>Estimated Completion Date:</strong> [DATE]
+        </p>
+        <hr />
+        <h2>COST BREAKDOWN</h2>
+        <h3>Development Costs</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Description</th>
+              <th>Quantity</th>
+              <th>Rate</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Discovery &amp; Planning</strong></td>
+              <td>Requirements analysis, project planning</td>
+              <td>[X] hours</td>
+              <td>₦[RATE]</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>UI/UX Design</strong></td>
+              <td>Wireframes, mockups, design system</td>
+              <td>[X] hours</td>
+              <td>₦[RATE]</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Frontend Development</strong></td>
+              <td>User interface implementation</td>
+              <td>[X] hours</td>
+              <td>₦[RATE]</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Backend Development</strong></td>
+              <td>Server, database, APIs</td>
+              <td>[X] hours</td>
+              <td>₦[RATE]</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Testing &amp; QA</strong></td>
+              <td>Quality assurance, bug fixes</td>
+              <td>[X] hours</td>
+              <td>₦[RATE]</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Deployment</strong></td>
+              <td>App store submission, server setup</td>
+              <td>[X] hours</td>
+              <td>₦[RATE]</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Project Management</strong></td>
+              <td>Coordination, communication</td>
+              <td>[X] hours</td>
+              <td>₦[RATE]</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><strong>Subtotal:</strong> ₦[AMOUNT]</p>
+        <h3>Additional Costs (Optional)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Description</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>App Store Fees</td>
+              <td>Apple Developer ($99/year)</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td>Google Play Fees</td>
+              <td>One-time fee ($25)</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td>Domain Registration</td>
+              <td>.com domain (1 year)</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td>SSL Certificate</td>
+              <td>Security certificate (1 year)</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td>Hosting (Initial)</td>
+              <td>3 months hosting</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td>Third-party Services</td>
+              <td>[Service name] subscription</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><strong>Additional Costs Total:</strong> ₦[AMOUNT]</p>
+        <hr />
+        <h2>PRICING SUMMARY</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Development Costs</strong></td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Additional Costs</strong></td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Subtotal</strong></td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Discount (if applicable)</strong></td>
+              <td>-₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>TAX/VAT (if applicable)</strong></td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>TOTAL PROJECT COST</strong></td>
+              <td><strong>₦[AMOUNT]</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <h2>PAYMENT TERMS</h2>
+        <h3>Payment Schedule</h3>
+        <p><strong>Option 1: Standard Payment Plan</strong></p>
+        <ul>
+          <li>
+            <strong>40% Deposit:</strong> ₦[AMOUNT] - Upon contract signing
+          </li>
+          <li>
+            <strong>30% Midpoint:</strong> ₦[AMOUNT] - Upon design approval /
+            development milestone
+          </li>
+          <li>
+            <strong>30% Final:</strong> ₦[AMOUNT] - Upon project completion and
+            delivery
+          </li>
+        </ul>
+        <p><strong>Option 2: Milestone-Based Payment</strong></p>
+        <ul>
+          <li><strong>Phase 1 (Discovery &amp; Design):</strong> ₦[AMOUNT]</li>
+          <li><strong>Phase 2 (Development):</strong> ₦[AMOUNT]</li>
+          <li><strong>Phase 3 (Testing &amp; Launch):</strong> ₦[AMOUNT]</li>
+        </ul>
+        <h3>Payment Methods</h3>
+        <ul>
+          <li>Bank Transfer</li>
+          <li>Mobile Money</li>
+          <li>[Other payment methods]</li>
+        </ul>
+        <h3>Payment Terms</h3>
+        <ul>
+          <li>Invoices are due within [X] days of issue</li>
+          <li>Late payments may incur additional fees</li>
+          <li>Work may be paused for overdue payments</li>
+        </ul>
+        <hr />
+        <h2>WHAT'S INCLUDED</h2>
+        <h3>✓ Included in This Quote</h3>
+        <ul>
+          <li>[x] rounds of design revisions</li>
+          <li>Source code and documentation</li>
+          <li>[X]-day warranty period for bug fixes</li>
+          <li>App store submission assistance (if applicable)</li>
+          <li>Basic training and handover</li>
+          <li>[x] hours of post-launch support</li>
+        </ul>
+        <h3>✗ Not Included</h3>
+        <ul>
+          <li>Ongoing hosting and maintenance (available separately)</li>
+          <li>Content creation (text, images, videos)</li>
+          <li>Third-party service fees</li>
+          <li>Marketing and promotion</li>
+          <li>Feature additions after launch (billed separately)</li>
+        </ul>
+        <hr />
+        <h2>POST-LAUNCH SUPPORT OPTIONS</h2>
+        <h3>Option 1: Pay-As-You-Go</h3>
+        <p>
+          <strong>Rate:</strong> ₦[RATE] per hour<br />
+          <strong>Best for:</strong> Occasional updates and fixes
+        </p>
+        <h3>Option 2: Monthly Retainer</h3>
+        <p>
+          <strong>Cost:</strong> ₦[AMOUNT] per month<br />
+          <strong>Includes:</strong> [X] hours of support, priority response,
+          monthly updates<br />
+          <strong>Best for:</strong> Regular maintenance and updates
+        </p>
+        <h3>Option 3: Annual Package</h3>
+        <p>
+          <strong>Cost:</strong> ₦[AMOUNT] per year (Save [X]%)<br />
+          <strong>Includes:</strong> Unlimited bug fixes, security updates, [X]
+          hours of enhancements<br />
+          <strong>Best for:</strong> Long-term partnership
+        </p>
+        <hr />
+        <h2>ASSUMPTIONS &amp; DEPENDENCIES</h2>
+        <p>This quotation is based on the following assumptions:</p>
+        <ol>
+          <li>
+            Client will provide all necessary content, assets, and information
+            in a timely manner
+          </li>
+          <li>
+            Client will provide feedback and approvals within [X] business days
+          </li>
+          <li>No major scope changes will be requested during development</li>
+          <li>Third-party services and APIs will function as documented</li>
+          <li>Client has necessary accounts and access for deployment</li>
+          <li>[Add other assumptions]</li>
+        </ol>
+        <hr />
+        <h2>EXCLUSIONS</h2>
+        <p>The following are explicitly excluded from this quotation:</p>
+        <ul>
+          <li>[Exclusion 1]</li>
+          <li>[Exclusion 2]</li>
+          <li>[Exclusion 3]</li>
+          <li>[Add more as needed]</li>
+        </ul>
+        <hr />
+        <h2>TERMS &amp; CONDITIONS</h2>
+        <ol>
+          <li>
+            <strong>Validity:</strong> This quotation is valid for 30 days from
+            the date of issue
+          </li>
+          <li>
+            <strong>Acceptance:</strong> A signed contract and initial deposit
+            are required to begin work
+          </li>
+          <li>
+            <strong>Timeline:</strong> Estimated timeline assumes timely client
+            feedback and no major scope changes
+          </li>
+          <li>
+            <strong>Changes:</strong> Scope changes may affect timeline and cost
+          </li>
+          <li>
+            <strong>Intellectual Property:</strong> Full IP rights transfer to
+            client upon final payment
+          </li>
+          <li>
+            <strong>Warranty:</strong> [X]-day warranty for bug fixes after
+            launch
+          </li>
+          <li>
+            <strong>Cancellation:</strong> Cancellation terms as per contract
+            agreement
+          </li>
+        </ol>
+        <hr />
+        <h2>OPTIONAL ADD-ONS</h2>
+        <p>Enhance your project with these optional services:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Add-On</th>
+              <th>Description</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Advanced Analytics</strong></td>
+              <td>Custom analytics dashboard</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Push Notifications</strong></td>
+              <td>Real-time notification system</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Admin Dashboard</strong></td>
+              <td>Content management system</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Multi-language Support</strong></td>
+              <td>Internationalization (i18n)</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Social Media Integration</strong></td>
+              <td>Login &amp; sharing features</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Payment Gateway</strong></td>
+              <td>Stripe/Paystack integration</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>Advanced Security</strong></td>
+              <td>Enhanced security features</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+            <tr>
+              <td><strong>API Development</strong></td>
+              <td>Custom REST/GraphQL API</td>
+              <td>₦[AMOUNT]</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <h2>NEXT STEPS</h2>
+        <p>Ready to get started? Here's what happens next:</p>
+        <ol>
+          <li>
+            <strong>Review</strong> this quotation and let us know if you have
+            any questions
+          </li>
+          <li><strong>Approve</strong> the quotation and scope of work</li>
+          <li><strong>Sign</strong> the project contract</li>
+          <li><strong>Pay</strong> the initial deposit</li>
+          <li>
+            <strong>Kickoff</strong> - We'll schedule a project kickoff meeting
+          </li>
+          <li>
+            <strong>Build</strong> - We'll start bringing your vision to life!
+          </li>
+        </ol>
+        <hr />
+        <h2>QUESTIONS?</h2>
+        <p>We're here to help! Contact us:</p>
+        <p>
+          <strong>📧 Email:</strong> kenikooltechworld@gmail.com<br />
+          <strong>📞 Phone:</strong> 09128176313<br />
+          <strong>🌐 Website:</strong> www.kenikooltech.com
+        </p>
+        <hr />
+        <h2>ACCEPTANCE</h2>
+        <p>To accept this quotation and proceed with the project:</p>
+        <p>
+          <strong>Client Signature:</strong> <strong><em>*</em></strong
+          ><strong><em>___</em></strong
+          ><strong><em>*</em></strong
+          ><br />
+          <strong>Name:</strong> [Client Name]<br />
+          <strong>Date:</strong> <strong><em>*</em></strong
+          ><strong><em>___</em></strong
+          ><strong><em>*</em></strong>
+        </p>
+        <hr />
+        <p>
+          <strong>Prepared by:</strong> Kenikool Tech World<br />
+          <strong>Date:</strong> [DATE]<br />
+          <strong>Quotation Valid Until:</strong> [DATE]
+        </p>
+        <hr />
+        <p>
+          <em
+            >Thank you for considering Kenikool Tech World for your project. We
+            look forward to working with you!</em
+          >
+          🚀
+        </p>
+        <hr />
+        <p>
+          <strong>KENIKOOL TECH WORLD</strong><br />
+          <em>Transforming Ideas into Digital Reality</em>
+        </p>
+      </div>
     </div>
 
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>
