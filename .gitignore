@@ -47,6 +47,16 @@ build/
 # Documentation that shouldn't be public
 SETUP_COMPLETE.md
 TECH_UPDATE_SUMMARY.md
+DEPLOYMENT_COMPLETE.md
+QUICK_DEPLOY.md
+GITHUB_PAGES_SETUP.md
+DEPLOYMENT_GUIDE.md
+TECHNOLOGIES.md
 
 # Windows batch file outputs
 *.bat.log
+
+# Deployment scripts (keep local only)
+deploy-to-github.bat
+open-site.bat
+DEPLOYMENT_NOTES.txt
